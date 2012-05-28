@@ -18,9 +18,9 @@ $img_sections = array(
 if($_GET){
   echo "<h2>Output</h2>";
   $hash = md5($_GET['y'].$_GET['fg'].$_GET['cdg'].$_GET['adg'].$_GET['cfg']);
-  $img = imagecreatefrompng("bg.png");
-  $top = imagecreatefrompng("top.png");
-  $bottom = imagecreatefrompng("bottom.png");
+  $img = imagecreatefrompng("assets/bg.png");
+  $top = imagecreatefrompng("assets/top.png");
+  $bottom = imagecreatefrompng("assets/bottom.png");
   $pos = 0;
   
   $black = imagecolorallocate($img, 0, 0, 0);
@@ -29,8 +29,8 @@ if($_GET){
   $font_size = 36;
   $offset = 240-36;
   $string = "Born\n".$_GET['y'];
-  imagettftext($img, $font_size, 0, $font_size, $font_size+$offset, $black, "./font.ttf",$string);
-  imagettftext($img, $font_size, 0, $font_size+2, $font_size+$offset+2, $white, "./font.ttf",$string);
+  imagettftext($img, $font_size, 0, $font_size, $font_size+$offset, $black, "./assets/font.ttf",$string);
+  imagettftext($img, $font_size, 0, $font_size+2, $font_size+$offset+2, $white, "./assets/font.ttf",$string);
   
   foreach($img_sections as $img_section_key => $img_section){
     $pos++;
@@ -41,11 +41,11 @@ if($_GET){
     $font_size = 12;
     $offset = 80+$font_size+4+320;
     $string = $img_section;
-    imagettftext($img, $font_size, 0, $pos*(256+40)-1, $font_size+$offset-1, $black, "./font.ttf",$string);
-    imagettftext($img, $font_size, 0, $pos*(256+40)+1, $font_size+$offset-1, $black, "./font.ttf",$string);
-    imagettftext($img, $font_size, 0, $pos*(256+40)-1, $font_size+$offset+1, $black, "./font.ttf",$string);
-    imagettftext($img, $font_size, 0, $pos*(256+40)+1, $font_size+$offset+1, $black, "./font.ttf",$string);
-    imagettftext($img, $font_size, 0, $pos*(256+40), $font_size+$offset, $white, "./font.ttf",$string);
+    imagettftext($img, $font_size, 0, $pos*(256+40)-1, $font_size+$offset-1, $black, "./assets/font.ttf",$string);
+    imagettftext($img, $font_size, 0, $pos*(256+40)+1, $font_size+$offset-1, $black, "./assets/font.ttf",$string);
+    imagettftext($img, $font_size, 0, $pos*(256+40)-1, $font_size+$offset+1, $black, "./assets/font.ttf",$string);
+    imagettftext($img, $font_size, 0, $pos*(256+40)+1, $font_size+$offset+1, $black, "./assets/font.ttf",$string);
+    imagettftext($img, $font_size, 0, $pos*(256+40), $font_size+$offset, $white, "./assets/font.ttf",$string);
   }
   imagepng($img, "cache/$hash.png");
   echo "<img src=\"cache/$hash.png\" />";
