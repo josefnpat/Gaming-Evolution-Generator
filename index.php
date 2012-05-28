@@ -13,7 +13,7 @@ $img_sections = array(
   <head>
     <meta charset="utf-8">
     <title><?php echo $title; ?></title>
-    <link href="bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
     <style type="text/css">
       body {
         padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
