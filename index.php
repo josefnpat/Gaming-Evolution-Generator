@@ -77,7 +77,7 @@ if($_GET){
     }
     imagepng($img, "cache/$hash.png");
   }
-  echo "<img src=\"cache/$hash.png\" width=\"900px\" /><br />\n";
+  echo "<img src=\"cache/$hash.png\" alt=\"output\" width=\"900\" /><br />\n";
   echo "<a href=\"cache/$hash.png\">Full Resolution (1480x480)</a>\n";
 } else {
 ?>
