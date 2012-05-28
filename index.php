@@ -78,7 +78,7 @@ if($_GET){
     imagepng($img, "cache/$hash.png");
   }
   echo "<img src=\"cache/$hash.png\" alt=\"output\" width=\"900\" /><br />\n";
-  echo "<a href=\"cache/$hash.png\">Full Resolution (1480x480)</a>\n";
+  echo "<a href=\"cache/$hash.png\">Full Resolution (1480x480)</a><i class=\"icon-zoom-in\"></i>\n";
 } else {
 ?>
     <h2>Generator</h2>
