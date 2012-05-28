@@ -14,12 +14,9 @@ $img_sections = array(
     <meta charset="utf-8">
     <title><?php echo $title; ?></title>
     <link href="bootstrap/css/bootstrap.css" rel="stylesheet" />
-    <style>
+    <style type="text/css">
       body {
         padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
-      }
-      .control-label {
-        /* width:240px !important; */
       }
     </style>
   </head>
@@ -85,7 +82,7 @@ if($_GET){
 } else {
 ?>
     <h2>Generator</h2>
-    <form action="" method="get"  class="form-horizontal" >
+    <form action="." method="get"  class="form-horizontal" >
       <div class="control-group">
         <label class="control-label">Year of Birth </label>
         <div class="controls">
