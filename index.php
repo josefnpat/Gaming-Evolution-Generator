@@ -125,6 +125,12 @@ echo $options;
         <input type="submit" value="Generate" class="btn btn-primary" />
       </div>
     </form>
+    <p>If your game is not listed, either;</p>
+    <ul>
+      <li><a href="https://github.com/josefnpat/Gaming-Evolution-Generator/issues/new">submit a new issue</a> via the <a href="https://github.com/josefnpat/Gaming-Evolution-Generator/issues">issue tracker</a> or,</li>
+      <li><a href="https://github.com/josefnpat/Gaming-Evolution-Generator/fork">fork</a> and make a <a href="https://github.com/josefnpat/Gaming-Evolution-Generator/pull/new/master">pull request</a></li>
+    </ul>
+    <a href="https://github.com/josefnpat/Gaming-Evolution-Generator">github repo</a>
 <?php } // end of if ?>
   </div> <!-- span8 -->
   </div> <!-- class="container" -->
