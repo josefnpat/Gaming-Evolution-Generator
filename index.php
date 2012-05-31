@@ -1,5 +1,4 @@
 <?php
-error_reporting(-1);
 $title = "Gaming Evolution Generator";
 $games = json_decode(file_get_contents("games.json"));
 $img_sections = array(
@@ -128,9 +127,10 @@ echo $options;
     <p>If your game is not listed, either;</p>
     <ul>
       <li><a href="https://github.com/josefnpat/Gaming-Evolution-Generator/issues/new">submit a new issue</a> via the <a href="https://github.com/josefnpat/Gaming-Evolution-Generator/issues">issue tracker</a> or,</li>
-      <li><a href="https://github.com/josefnpat/Gaming-Evolution-Generator/fork">fork</a> and make a <a href="https://github.com/josefnpat/Gaming-Evolution-Generator/pull/new/master">pull request</a></li>
+      <li><a href="https://github.com/josefnpat/Gaming-Evolution-Generator/fork">fork</a> and make a <a href="https://github.com/josefnpat/Gaming-Evolution-Generator/pull/new/master">pull request</a>.</li>
     </ul>
-    <a href="https://github.com/josefnpat/Gaming-Evolution-Generator">github repo</a>
+    <p>One can join the official IRC channal via <a href="irc://irc.oftc.net/geg">irc.oftc.net #geg</a> or <a href="http://en.irc2go.com/webchat/?net=OFTC&room=geg">webchat</i></a>.</p>
+    <p>One can also find the GitHub repository <a href="https://github.com/josefnpat/Gaming-Evolution-Generator">here</a>.</p>
 <?php } // end of if ?>
   </div> <!-- span8 -->
   </div> <!-- class="container" -->
