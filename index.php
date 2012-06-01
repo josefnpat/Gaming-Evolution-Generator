@@ -1,4 +1,5 @@
 <?php
+//error_reporting(0);
 $title = "Gaming Evolution Generator";
 $games = json_decode(file_get_contents("games.json"));
 $img_sections = array(
@@ -13,11 +14,25 @@ $img_sections = array(
     <meta charset="utf-8">
     <title><?php echo $title; ?></title>
     <link href="bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="favicon.ico" rel="icon" type="image/x-icon" />
     <style type="text/css">
       body {
         padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
       }
     </style>
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-32314376-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>
   </head>
   <body>
   <div class="navbar navbar-fixed-top">
@@ -39,7 +54,7 @@ $img_sections = array(
   </div>
   
   <div class="container">
-  <div class="span8">
+  <div class="span12">
 <?php
 if($_GET){
   echo "<h2>Output</h2>";
@@ -77,7 +92,7 @@ if($_GET){
     imagepng($img, "cache/$hash.png");
   }
   echo "<img src=\"cache/$hash.png\" alt=\"output\" width=\"900\" /><br />\n";
-  echo "<a href=\"cache/$hash.png\">Full Resolution (1480x480)</a><i class=\"icon-zoom-in\"></i>\n";
+  echo "<p><a href=\"cache/$hash.png\">Full Resolution (1480x480)</a><i class=\"icon-zoom-in\"></i></p>\n";
 } else {
 ?>
     <h2>Generator</h2>
@@ -124,15 +139,23 @@ echo $options;
         <input type="submit" value="Generate" class="btn btn-primary" />
       </div>
     </form>
-    <p>If your game is not listed, either;</p>
+<?php } // end of if ?>
+    <p>If your game is not listed or the wrong game is being shown, either;</p>
     <ul>
       <li><a href="https://github.com/josefnpat/Gaming-Evolution-Generator/issues/new">submit a new issue</a> via the <a href="https://github.com/josefnpat/Gaming-Evolution-Generator/issues">issue tracker</a> or,</li>
       <li><a href="https://github.com/josefnpat/Gaming-Evolution-Generator/fork">fork</a> and make a <a href="https://github.com/josefnpat/Gaming-Evolution-Generator/pull/new/master">pull request</a>.</li>
     </ul>
     <p>One can join the official IRC channal via <a href="irc://irc.oftc.net/geg">irc.oftc.net #geg</a> or <a href="http://en.irc2go.com/webchat/?net=OFTC&room=geg">webchat</i></a>.</p>
     <p>One can also find the GitHub repository <a href="https://github.com/josefnpat/Gaming-Evolution-Generator">here</a>.</p>
-<?php } // end of if ?>
-  </div> <!-- span8 -->
+    <p>
+      <!-- AddThis Button BEGIN -->
+      <div class="addthis_toolbox addthis_default_style ">
+        <a class="addthis_counter addthis_pill_style"></a>
+      </div>
+      <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-4f4e79607beaf875"></script>
+      <!-- AddThis Button END -->
+    </p>
+  </div> <!-- span12 -->
   </div> <!-- class="container" -->
   </body>
 </html>
