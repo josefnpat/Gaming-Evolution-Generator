@@ -1,0 +1,82 @@
+#!/usr/bin/php
+<?php
+$shortopts = "rci::";
+$longopts = array(
+  "rebuild",
+  "check",
+  "indent"
+);
+$options = getopt($shortopts, $longopts);
+
+$run = false;
+
+if(isset($options['r']) or isset($options['rebuild'])){
+  $run = true;
+  echo "Rebuilding .. ";
+  function sort_games($a,$b){
+    $t = strcasecmp($a->title,$b->title);
+    if($t == 0){
+      echo "\n\tWarning: Duplicate found: `".$a->title."` - `".$b->title."`\n";
+    }
+    return $t;
+  }
+  $data = json_decode(file_get_contents("../games.json"));
+  usort($data,"sort_games");
+  file_put_contents("../games.json",json_encode($data));
+  echo "done\n";
+}
+
+if(isset($options['c']) or isset($options['check'])){
+  $run = true;
+  echo "Checking .. ";
+  $data = json_decode(file_get_contents("../games.json"));
+  $covers = glob("../covers/*");
+  if(count($data)!=count($covers)){
+    echo "\n\tWarning: Count Mismatch:\n";
+    echo "\t\tGames in db: ".count($data)."\n";  
+    echo "\t\tGames in covers: ".count($covers)."\n";
+  }
+  foreach($covers as $cover){
+    $exe = `identify $cover`;
+    if(!preg_match("@^\.\.\/covers\/(.){1,}\sPNG\s256x320\s256x320\+0\+0\s8-bit@",$exe)){
+      echo "\n\tInvalid identify: $exe\n";
+    }
+    $temp = substr($cover,10,-4);//remove `../covers/` and `.png`
+    $found = false;
+    foreach($data as $entry){
+      if($entry->img == $temp){
+        $found = true;
+        break;
+      }
+    }
+    if(!$found){
+      echo "\n\tWarning: Missing db entry for cover `$temp` [../covers/$temp.png]\n";
+    }
+  }
+  foreach($data as $entry){
+    if(!is_file("../covers/".$entry->img.".png")){
+      echo "\n\tWarning: Missing image for db entry `".$entry->title."` [../covers/".$entry->img.".png]\n";
+    }
+  }
+  echo "done\n";
+}
+
+if(isset($options['i']) or isset($options['indent'])){
+  $run = true;
+  echo "Indenting .. ";
+  $raw = file_get_contents("../games.json");  
+  $pattern = array(',"', '{', '}');
+  $replacement = array(",\n\t\"", "{\n\t", "\n}");
+  $raw = str_replace($pattern, $replacement, $raw);
+  file_put_contents("../games.json",$raw);
+  echo "done\n";
+}
+if(!$run){
+?>
+Usage: db [OPTION]
+Rebuilds or checks the games.json file.
+  -r, --rebuild     Rebuild games.json alphabetically and minified.
+  -c, --check       Check to make sure all the images exist, and art the correct size and type.
+  -i, --indent      Indent the .json file so that it is easy to read.
+<?php
+}
