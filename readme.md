@@ -22,4 +22,4 @@ Installation notes:
 Current Images:
 
 * My favorites
-* Top 200 from http://www.unikgamer.com/tops/favorite-video-games-of-all-time-1.html
+* Top 300 from http://www.unikgamer.com/tops/favorite-video-games-of-all-time-1.html
