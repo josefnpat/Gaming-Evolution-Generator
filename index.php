@@ -35,8 +35,8 @@ function generator_form($games,$img_sections){
         <label class="control-label"><?php echo $img_section; ?> </label>
         <div class="controls">
         <select name="<?php echo $img_section_key; ?>">
-          <option>Select Game</option>
-<?php 
+          <option>Select Game (<?php echo count($games); ?>)</option>
+<?php
   $options = "";
   foreach($games as $game){
     if(isset($_GET[$img_section_key]) and $game->img == $_GET[$img_section_key]){
@@ -103,7 +103,6 @@ function generator_form($games,$img_sections){
       </div>
     </div>
   </div>
-  
   <div class="container">
   <div class="span12">
 <?php
@@ -117,7 +116,6 @@ if($_GET){
       $errors[] = "Invalid game selected for $img_section.";
     }
   }
-  
   if(count($errors)){
     echo "<h2>Ooops!</h2>";
     echo "<ul>\n";
@@ -134,7 +132,6 @@ if($_GET){
       $top = imagecreatefrompng("assets/top.png");
       $bottom = imagecreatefrompng("assets/bottom.png");
       $pos = 0;
-      
       $black = imagecolorallocate($img, 0, 0, 0);
       $white = imagecolorallocate($img, 255, 255, 255);
       $grey = imagecolorallocate($img, 127, 127, 127);
@@ -143,7 +140,6 @@ if($_GET){
       $string = "Born\n".$_GET['y'];
       imagettftext($img, $font_size, 0, $font_size, $font_size+$offset, $black, "./assets/font.ttf",$string);
       imagettftext($img, $font_size, 0, $font_size+2, $font_size+$offset+2, $white, "./assets/font.ttf",$string);
-      
       foreach($img_sections as $img_section_key => $img_section){
         $pos++;
         $t_img = @imagecreatefrompng ("covers/".$_GET[$img_section_key].".png");
